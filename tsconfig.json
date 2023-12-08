@@ -15,6 +15,15 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/Seguimiento.jsx",
+    "pages/api/people/[id].js",
+    "pages/api/people/index.js",
+    "pages/person/[id].jsx",
+    "pages/index.jsx"
+  ],
   "exclude": ["node_modules"]
 }
