@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   const { id } = await req.body;
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     executablePath: executablePath(),
   });
 
