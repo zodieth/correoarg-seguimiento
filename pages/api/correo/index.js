@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer-extra";
 import stealthPlugin from "puppeteer-extra-plugin-stealth";
 import { executablePath } from "puppeteer";
+const RecaptchaPlugin = require("puppeteer-extra-plugin-recaptcha");
 
 export default async function handler(req, res) {
   // if (req.method !== "POST") {
@@ -10,6 +11,15 @@ export default async function handler(req, res) {
 
   puppeteer.use(stealthPlugin);
 
+  // puppeteer.use(
+  //   RecaptchaPlugin(
+  //     {
+  //       provider: { id: "2captcha", token: "2cfed42a076aedbef4d4807d89799480" },
+  //     },
+  //     { visualFeedback: true }
+  //   )
+  // );
+
   const url = "https://www.correoargentino.com.ar/formularios/e-commerce";
 
   // const main = async
@@ -17,7 +27,7 @@ export default async function handler(req, res) {
   const { id } = await req.body;
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     executablePath: executablePath(),
   });
 
@@ -29,16 +39,19 @@ export default async function handler(req, res) {
   // Espera a que el elemento sea visible y se pueda interactuar
   await page.waitForSelector(".g-recaptcha");
 
-  // Busca el elemento con la clase específica
   const checkbox = await page.$(".g-recaptcha");
 
-  // Haz clic en el elemento si se encuentra
   if (checkbox) {
     await checkbox.click();
   } else {
     console.log("No se encontró el elemento");
   }
-  await page.waitForTimeout(1000);
+
+  // const { solved, error } = await page.solveRecaptchas();
+  // if (solved) {
+  // }
+
+  await page.waitForTimeout(2000);
   await page.click("#btsubmit");
   await page.waitForTimeout(1000);
 
