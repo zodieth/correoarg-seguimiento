@@ -84,51 +84,49 @@ function DetalleSeguimiento() {
   return (
     <>
       <div>{router.query.id}</div>
-      {data ? (
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-            <thead className="ltr:text-left rtl:text-right">
-              <tr>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                  Fecha
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                  Planta
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                  Historia
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                  Estado
-                </th>
-              </tr>
-            </thead>
+      {/* {data ? ( */}
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead className="ltr:text-left rtl:text-right">
+            <tr>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Fecha
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Planta
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Historia
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Estado
+              </th>
+            </tr>
+          </thead>
 
-            <tbody className="divide-y divide-gray-200">
-              {data?.map((e) => {
-                return (
-                  <tr className="odd:bg-gray-50">
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                      {e.Fecha}
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                      {e.Planta}
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                      {e.Historia}
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                      {e.Estado}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        ""
-      )}
+          <tbody className="divide-y divide-gray-200">
+            {data?.map((e) => {
+              return (
+                <tr className="odd:bg-gray-50">
+                  <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    {e.Fecha}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {e.Planta}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {e.Historia}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {e.Estado}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {/* ) : ( "" )} */}
     </>
   );
 }
